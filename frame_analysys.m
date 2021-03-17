@@ -7,6 +7,11 @@ function [res] = frame_analysys(frame, config)
     imps3 = frame.Post3;
     imps4 = frame.Post4;
     
+    [m1, n1] = noMODES_percent_in_post(imps1);
+    [m2, n2] = noMODES_percent_in_post(imps2);
+    [m3, n3] = noMODES_percent_in_post(imps3);
+    [m4, n4] = noMODES_percent_in_post(imps4);
+    
     for i = 1:length(imps1)
         for j = 1:length(imps2)
             b1 = ismatch(imps1(i),imps2(j),config.ranges.r21/config.c);
@@ -229,6 +234,17 @@ function [res] = frame_analysys(frame, config)
     res.matches_count4 = matches_count(3);
     res.PD = PD;
     
+%     [m5, n5] = noMODES_percent_in_match(out);
+    
+    res.m1 = m1;
+    res.n1 = n1;
+    res.m2 = m2;
+    res.n2 = n2;
+    res.m3 = m3;
+    res.n3 = n3;
+    res.m4 = m4;
+    res.n4 = n4;
+    
     if isempty(imps1) && isempty(imps2) && isempty(imps3) && isempty(imps4)
         res.az = 0;
     else
@@ -268,3 +284,29 @@ function [bool] = contains_match(out, posts, nums)
        end
     end
 end
+
+function [m, n] = noMODES_percent_in_post(imps)
+    m = 0;
+    n = 0;
+    for i = 1:length(imps)
+        n = n + 1;
+        if imps(i).freq ~= 1090000
+            m = m + 1;
+        end
+    end
+end
+
+function [m, n] = noMODES_percent_in_match(out, frame)
+    m = 0;
+    n = 0;
+    for i = 1:size(out,2)
+        n = n + 1;
+        tt = find(out(:,i));
+        if frame.freq ~= 1090000
+            m = m + 1;
+        end
+    end
+end
+
+
+

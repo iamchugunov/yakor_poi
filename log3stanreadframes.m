@@ -12,7 +12,7 @@ k = 0;
 frames = 0;
 
 files_range = 1:N;
-files_range = 4;
+files_range = 1:10;
 for i = files_range
     
     filename = [folder '\' files(i).name];
@@ -58,6 +58,9 @@ for i = files_range
                 imp.period = 0;
                 imp.d4c1 = data{1,21};
                 imps(j) = imp;
+                if j > 1
+                    imps(j).period = imps(j).T - imps(j-1).T;
+                end
             end
             
             if ~isempty(imps(1).T)
