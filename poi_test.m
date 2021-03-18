@@ -1,7 +1,7 @@
 function [database] = poi_test(poits)
     database = [];
     for i = 1:length(poits)
-        if poits(i).freq == 1090000 && poits(i).count == 4
+        if poits(i).freq == 1090000 && poits(i).count > 2
             ID = poits(i).d4c1;
             if isempty(database)
                 database(1).ID = ID;
