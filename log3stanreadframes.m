@@ -12,7 +12,8 @@ k = 0;
 frames = 0;
 
 files_range = 1:N;
-files_range = 1:10;
+files_range = 1:5;
+
 for i = files_range
     
     filename = [folder '\' files(i).name];

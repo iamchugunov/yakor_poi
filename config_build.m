@@ -1,5 +1,5 @@
 function [ config ] = config_build()
-    addpath('D:\MATLAB\ПЕРЕСЧЕТ КООРДИНАТ');
+    addpath('мусор');
     %Воронеж
 %     PostsBLH(:,1) = [51.400773; 39.035690; 172.5];
 %     PostsBLH(:,2) = [51.535456; 39.286083; 119.0];
