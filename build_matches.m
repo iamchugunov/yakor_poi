@@ -3,7 +3,8 @@ function [matches, poits] = build_matches(Frames, config)
     k = 0;
     for i = 1:length(Frames)
         i
-        out = frame_analysys(Frames(i), config);
+%         out = frame_analysys(Frames(i), config);
+        out.data = Frames(i).matches;
         for j = 1:size(out.data,2)
             k = k + 1;
             poits(k).imps = zeros(4,5);
