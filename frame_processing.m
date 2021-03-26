@@ -1,4 +1,4 @@
-function [matches,poits] = frame_processing(Frames)
+function [matches,poits,database,track_base,config] = frame_processing(Frames)
 %Обработка frames
     config  = config_build();
     list_frames = Iden4posts(Frames);
@@ -27,7 +27,9 @@ function [matches,poits] = frame_processing(Frames)
     end
 
     cur_frame = Frames(list_frames(7));
-    
+   
+%%%========================================================================    
+%%%здесь по сути функция build_matches() реализуется, но для одного кадра
     
     poits = [];
     k = 0;
@@ -87,37 +89,68 @@ function [matches,poits] = frame_processing(Frames)
     end
     
     matches = out;
+%%%========================================================================       
     
-    h_LA = config.hei;
-    XpT = config.PostsENU;
-    zzz=0;
-    for zz=1:length(poits)
-        PD(:,zz) = poits(zz).PD;
+
+
+%%%========================================================================
+%%%Блок расчета координат по всем подряд отметкам (для 4х и 3х постов) и
+%%%визуализация
+%     h_LA = config.hei;
+%     XpT = config.PostsENU;
+%     zzz=0;
+%     for zz=1:length(poits)
+%         PD(:,zz) = poits(zz).PD;
+%         
+%          l=0;
+%         for z=1:4
+%             if matches.data(z,zz)==0
+%                 l=l+1;
+%             end
+%         end
+%         if l==0
+%             zzz = zzz+1;
+%             X0= [0;
+%                 0;
+%                 1000;]; %время излучения 
+%            X(:,zzz) = coord_solver2D(PD(:,zz), XpT, X0, h_LA); 
+%         elseif l==1
+%             zzz = zzz+1;
+%             [X1,X2] = solver3(XpT(:,find(PD)), PD(find(PD),1), h_LA);
+%             X(:,zzz) = X1;
+%             zzz = zzz+1;
+%             X(:,zzz) = X2;
+%         end
+%         
+%     end
+%     
+%     
+%     
+%     figure(1)
+%     plot(X(1,:),X(2,:),'r x')
+%     hold on
+%     plot(XpT(1,:),XpT(2,:),'b o') 
+% %     daspect([3 3 3])
+%     hold off
+%     grid on
+%%%========================================================================    
+
+    %Следующие функции работают пока только c Modes
+    [database] = poi_test(poits); %database времен прихода для формирования траекторий (времена приходов в (c) выстроены в последовательности для выделенных целей)
+    
+    [track_base] = solver4_track(database, config); %создание track_base (траектории целей в координатах) (учитываются точки с двумя решениями)
+    
         
-       
-        
-         l=0;
-        for z=1:4
-            if matches.data(z,zz)==0
-                l=l+1;
-            end
-        end
-        if l==0
-            zzz = zzz+1;
-            x0= 0;
-            y0 = 0;
-            [xla(1,zzz),yla(1,zzz),Hla,dT, DOP, NEV, err, flag] = Navigate3or4( XpT, PD(:,zz), h_LA, x0, y0 );
-        end
-    end
-    
-    
-    
-    figure(1)
-    plot(xla(1,:),yla(1,:),'r x')
+    figure(2)
+    plot(track_base(1).track(1,:),track_base(1).track(2,:),'r x')
     hold on
-    plot(XpT(1,:),XpT(2,:),'b o') 
-%     daspect([3 3 3])
+    plot(track_base(2).track(1,:),track_base(2).track(2,:),'k x')
+    hold on
+    plot(config.PostsENU(1,:),config.PostsENU(2,:),'b o') 
     hold off
     grid on
+
+
+
 end
 
