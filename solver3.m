@@ -1,4 +1,4 @@
-function [X1,X2] = solver3(XpT, PD, h_LA)
+function [X1,X2,dop1,dop2] = solver3(XpT, PD, h_LA)
 
     [X0] = X_function2D_v0(PD,XpT,3);
 %     [ x1(1),x1(2)] = Navigate3or4( XpT, PD, h_LA, X0(2,1),X0(3,1) );
