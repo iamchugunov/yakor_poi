@@ -1,4 +1,5 @@
-function [track_base] = solver4_track(database, config)
+function [track_base,kosyak] = solver4_track(database, config,time_frame,V_plane)
+    kosyak = 0;
     for k = 1:length(database)
         j=0;
         for i = 1:size(database(k).data,2)
@@ -16,13 +17,24 @@ function [track_base] = solver4_track(database, config)
 %                 [x1, x2] =
 %                 solver3(config.PostsENU(:,find(database(k).data(:,i))), database(k).data(find(database(k).data(:,i)),i)*config.c, 5000)
                 [x1,x2] = solver3(config.PostsENU(:,find(database(k).data(:,i))),database(k).data(find(database(k).data(:,i)),i)*config.c,config.hei);
-                track_base(k).track(1,j) = x1(1,1);
-                track_base(k).track(2,j) = x1(2,1);
-                j=j+1;
-                track_base(k).track(1,j) = x2(1,1);
-                track_base(k).track(2,j) = x2(2,1);
-                
-                
+                %исключение второго решения
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%
+                if norm(x1-x2)<=sqrt(2)
+                    track_base(k).track(1,j) = x1(1,1);
+                    track_base(k).track(2,j) = x1(2,1);
+                elseif norm(x1-x2)>=(10*sqrt(2)*time_frame*V_plane)
+                        if (abs(track_base(k).track(1,j-1)-x1(1,1))<=(10*time_frame*V_plane)) || (abs(track_base(k).track(2,j-1)-x1(2,1))<=(10*time_frame*V_plane))
+                            track_base(k).track(1,j) = x1(1,1);
+                            track_base(k).track(2,j) = x1(2,1);
+                        else
+                            track_base(k).track(1,j) = x2(1,1);
+                            track_base(k).track(2,j) = x2(2,1);
+                        end
+                else
+                    kosyak=kosyak+1;
+                end
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%
+                  
            end
         end
     end
