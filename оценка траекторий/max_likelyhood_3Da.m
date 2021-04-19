@@ -1,11 +1,13 @@
-function [X, R] = max_likelyhood_3Da(y, config, X0)
-    addpath("deriv_func")   
+function [X, R, nev] = max_likelyhood_3Da(y, config, X0)
+    addpath("D:\github\yakor_poi\deriv_func")   
     N = size(y,2);
-    t0 = min(min(y));
+%     t0 = min(min(y));
+%     t0 = max(y(:,1)) - 1;
+    t0 = 0;
     
     X = zeros(9 + N,1);
     X(1:9) = X0;
-    X(10:end) = max(y)-0.1;
+    X(10:end) = max(y)-10;
     
 %     dpdX = zeros(9 + N, 1);
 %     dp2d2X = zeros(9 + N, 9 + N);
@@ -151,6 +153,8 @@ function [X, R] = max_likelyhood_3Da(y, config, X0)
         X = X - inv(dp2d2X) * dpdX;
         k = k + 1;
 %         norm(X - X_prev)
+        nev(1,k) = norm(X - X_prev);
+        nev(2,k) = norm(X(1:4) - X_prev(1:4));
         if norm(X - X_prev) < 0.5 || k > 10
             R = dp2d2X;
             break;

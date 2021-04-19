@@ -1,4 +1,5 @@
 function [] = visual_rd(traj, config)
+    traj.toa = traj.ToA;
     k = [0;0;0];
     for i = 1:length(traj.toa)
         if traj.toa(1,i)
@@ -19,10 +20,11 @@ function [] = visual_rd(traj, config)
            end
         end 
     end
-    plot(t21,rd21,'.')
+    t0 = min([t21(1) t31(1) t41(1)]);
+    plot((t21 - t0)*1e-9,rd21,'.')
     hold on
-    plot(t31,rd31,'.')
-    plot(t41,rd41,'.')
+    plot((t31 - t0)*1e-9,rd31,'.')
+    plot((t41 - t0)*1e-9,rd41,'.')
     grid on
 end
 
