@@ -1,13 +1,14 @@
-function [X, R, lnrho] = max_likelyhood_2dv(y, config, X0)
-    addpath("deriv_func")   
+function [X, R, nev] = max_likelyhood_2dv(y, config, X0)
+    addpath("D:\github\yakor_poi\deriv_func")   
     N = size(y,2);
 %     t0 = min(min(y));
-    t0 = max(y(:,1)) - 1;
+%     t0 = max(y(:,1)) - 1;
+    t0 = 0;
     
     X = zeros(4 + N,1);
     X(1:4) = X0([1 2 4 5]);
     h = X0(7);
-    X(5:end) = max(y)-0.1;
+    X(5:end) = max(y)-10;
     
 %     dpdX = zeros(9 + N, 1);
 %     dp2d2X = zeros(9 + N, 9 + N);
@@ -79,8 +80,8 @@ function [X, R, lnrho] = max_likelyhood_2dv(y, config, X0)
 %         plot(X(1),X(3),'v')
         X = X - inv(dp2d2X) * dpdX;
         k = k + 1;
-%         nev(1,k) = norm(X - X_prev);
-%         nev(2,k) = norm(X(1:4) - X_prev(1:4));
+        nev(1,k) = norm(X - X_prev);
+        nev(2,k) = norm(X(1:4) - X_prev(1:4));
         if norm(X - X_prev) < 0.5 || k > 10
             R = dp2d2X;
             X0(1) = X(1);
@@ -89,15 +90,15 @@ function [X, R, lnrho] = max_likelyhood_2dv(y, config, X0)
             X0(5) = X(4);
             X0(10:9+N) = X(5:end);
             X = X0;
-            lnrho = 0;
-            for j = 1:N
-                for i = 1:size(y,1)
-                    if y(i,j) > 0
-                        t_k = (y(i,j) - t0)*1e-9;
-                        lnrho = lnrho + ln_p(y(i,j),X,t_k,i,j,config)/config.sigma_n^2;
-                    end
-                end
-            end
+%             lnrho = 0;
+%             for j = 1:N
+%                 for i = 1:size(y,1)
+%                     if y(i,j) > 0
+%                         t_k = (y(i,j) - t0)*1e-9;
+%                         lnrho = lnrho + ln_p(y(i,j),X,t_k,i,j,config)/config.sigma_n^2;
+%                     end
+%                 end
+%             end
             
             break;
         end
