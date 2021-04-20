@@ -9,20 +9,20 @@
     config  = config_build();
     
     
-    num_frame = find([Frames.time] == cursor_info.Position(1,1)) %номер кадра
-    num_frame = 127;
-    num_imp = find([Frames(num_frame).Post4.T] == cursor_info.Position(1,1)) %номер импульса в кадре
+%     num_frame = find([Frames.time] == cursor_info.Position(1,1)) %номер кадра
+%     num_frame = 127;
+%     num_imp = find([Frames(num_frame).Post4.T] == cursor_info.Position(1,1)) %номер импульса в кадре
     
     res = frame_analysys(Frames(127), config);
     
     
     %вот этот код нужно разобрать
-    kkk=0;
+    kkk=0; % flag набора vrem_foursomes
     foursome_index_prev = 0;
     foursome_prev = 0;
-    kk=1;
-    n=1;
-    kleimo = 0;
+    kk=1; %доп индекс для vrem_foursomes
+    n=1; % доп индекс для matches
+    kleimo = 0; % flag для уточнения записи текущей итерации в vrem_foursomes
     for i=1:size(res.data,2)
         foursome_index = find(res.data(:,i)~=0);
         foursome = res.data(foursome_index,i);
@@ -38,7 +38,7 @@
                             n=n-1;
                             matches(:,n) = 0;
                         end
-                        work_field2 = eval(['Frames(127).Post' num2str(j)]);
+                        work_field2 = eval(['Frames(127).Post' num2str(foursome_index(j))]); 
                         vrem_foursomes(:,kk) = res.data(:,i);
                         kk=kk+1;
                         kleimo = 1;
@@ -72,7 +72,7 @@
                     [M,Ii] = min(norm_E3);                     
                     [M,Ij] = min(M);
                     work_field_best = vrem_foursomes(:,Ij);
-                    matches(:,n) = work_field1_best;
+                    matches(:,n) = work_field_best;
                     n=n+1;
                     foursome_index_prev = foursome_index;
                     foursome_prev = foursome;
@@ -89,7 +89,7 @@
                     n=n+1;
                 else
                     kkk=0;
-                    idx = find(foursome_index~=j);
+                    idx = find(foursome_index~=j); %
                     work_field1 = eval(['Frames(127).Post' num2str(idx(1,1))]);
                    
                     for zz=1:size(vrem_foursomes,2)
@@ -101,7 +101,7 @@
                     [M,Ii] = min(norm_E3);                     
                     [M,Ij] = min(M);
                     work_field_best = vrem_foursomes(:,Ij);
-                    matches(:,n) = work_field1_best;
+                    matches(:,n) = work_field_best;
                     n=n+1;
                     foursome_index_prev = foursome_index;
                     foursome_prev = foursome;
@@ -118,7 +118,7 @@
                 n=n+1;
             else
                 kkk=0;
-                idx = find(foursome_index~=j);
+                idx = find(foursome_index~=j); %
                 work_field1 = eval(['Frames(127).Post' num2str(idx(1,1))]);
                 
                 for zz=1:size(vrem_foursomes,2)
@@ -131,7 +131,7 @@
                 [M,Ij] = min(M);
 
                 work_field_best = vrem_foursomes(:,Ij);
-                matches(:,n) = work_field1_best;
+                matches(:,n) = work_field_best;
                 n=n+1;
                 foursome_index_prev = foursome_index;
                 foursome_prev = foursome;
