@@ -1,4 +1,4 @@
-function [trash, zav] = main_voi(poits)
+function [trash, zav] = main_voi(poits, config)
 
 %     N = 10;
 %     k = 0;
@@ -16,7 +16,11 @@ function [trash, zav] = main_voi(poits)
 %     minmaxdt = minmaxdt(find(minmaxdt) > 0);
 %     stddt = stddt(find(stddt) > 0);
     
-    Tnak = 30;
+    T_kill_zav = config.T_kill_zav;
+    T_start_traj = config.T_start_traj;
+    T_kill_traj = config.T_kill_traj;
+    T_nak_traj = config.T_nak_traj;
+    
     zav = struct([]);
     trash = struct([]);
     
@@ -26,6 +30,13 @@ function [trash, zav] = main_voi(poits)
         if poits(i).freq > 9000
             continue
         end
+        
+        if poits(i).count == 4
+            X0 = zeros(4,1);
+            X0(3) = max(poits(i).ToA) * config.c;
+            poits(i) = poit_calc(poits(i), X0, config);
+        end
+        
         match_flag_traj = 0;
         
         if match_flag_traj == 0
@@ -41,9 +52,9 @@ function [trash, zav] = main_voi(poits)
                 if poits(i).count > 2
                     j = length(zav) + 1;
                     if j == 1
-                        zav = new_zav(poits(i));
+                        zav = new_zav(poits(i), config);
                     else
-                        zav(j) = new_zav(poits(i));
+                        zav(j) = new_zav(poits(i), config);
                     end
                 else
                     continue;
@@ -51,6 +62,11 @@ function [trash, zav] = main_voi(poits)
             end
             
             if j
+                if zav(j).xy_valid && poits(i).count == 3
+                    X0 = zav(j).last_4_cord;
+                    X0(4) = max(poits(i).ToA) * config.c;
+                    poits(i) = poit_calc(poits(i), X0, config);
+                end
                 zav(j) = add_poit_to_zav(zav(j), poits(i));
             end
             
@@ -61,7 +77,7 @@ function [trash, zav] = main_voi(poits)
 %             traj(j).toa(:,traj(j).count) = poits(i).imps(:,2);
         end
         
-        nums = find(poits(i).Frame - [zav.t_last] > Tnak);
+        nums = find(poits(i).Frame - [zav.t_last] > T_kill_zav);
         if nums
             nums
             if isempty(trash)
@@ -71,9 +87,19 @@ function [trash, zav] = main_voi(poits)
             end
             zav(nums) = [];
         end
+        
+        j = 1;
+        while j <= length(zav)
+            if isready_zav(zav(j))
+                [flag, zav(j)] = make_first_estimation_zav(zav(j), config);
+                zav(j) = [];
+                j = j - 1;
+            end
+            j = j + 1;
+        end
     end
     
-    nums = find( [zav.t_last] - [zav.t0] < Tnak);
+    nums = find( [zav.t_last] - [zav.t0] < T_kill_zav);
     if nums
             nums
             if isempty(trash)

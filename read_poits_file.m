@@ -14,6 +14,9 @@ while feof(f)==0
     k = k + 1;
     poit.Frame = str2num(S{1,1});
     poit.ToA = [str2num(S{2,1}); str2num(S{3,1}); str2num(S{4,1}); str2num(S{5,1})];
+    poit.coords = zeros(4,1);
+    poit.xy_valid = 0;
+    poit.valid_to_traj = 0;
     n = 0;
     for i = 1:4
        if poit.ToA(i) > 0
