@@ -2,15 +2,15 @@ function [ config ] = config_build()
     addpath('D:\Projects\ПЕРЕСЧЕТ КООРДИНАТ');
     addpath('D:\Projects\yakor_poi\оценка траекторий')
 %     vor
-%     PostsBLH(:,1) = [51.400773; 39.035690; 172.5];
-%     PostsBLH(:,2) = [51.535456; 39.286083; 119.0];
-%     PostsBLH(:,3) = [51.552025; 38.989821; 196.4];
-%     PostsBLH(:,4) = [51.504039; 39.108616; 124.4];
+    PostsBLH(:,1) = [51.400773; 39.035690; 172.5];
+    PostsBLH(:,2) = [51.535456; 39.286083; 119.0];
+    PostsBLH(:,3) = [51.552025; 38.989821; 196.4];
+    PostsBLH(:,4) = [51.504039; 39.108616; 124.4];
 %     arm
-    PostsBLH(:,1) = [40.106749; 44.325077; 851.2];
-    PostsBLH(:,2) = [40.221671; 44.518625; 1250.4];
-    PostsBLH(:,3) = [40.376235; 44.255345; 2034.1];
-    PostsBLH(:,4) = [40.204856; 44.376949; 1002.0];
+%     PostsBLH(:,1) = [40.106749; 44.325077; 851.2];
+%     PostsBLH(:,2) = [40.221671; 44.518625; 1250.4];
+%     PostsBLH(:,3) = [40.376235; 44.255345; 2034.1];
+%     PostsBLH(:,4) = [40.204856; 44.376949; 1002.0];
 
     BLHref = mean(PostsBLH');
     BLHref(3) = 0;
@@ -35,7 +35,7 @@ function [ config ] = config_build()
     config.c = 299792458/1e9;
     config.Vmax = 600;
     config.posts_number = size(config.PostsENU,2);
-    config.sigma_n = 10; %ns
+    config.sigma_n = 100; %ns
 
     config.ranges.r21 = norm(PostsENU(:,2) - PostsENU(:,1));
     config.ranges.r31 = norm(PostsENU(:,3) - PostsENU(:,1));
