@@ -1,8 +1,8 @@
-function [flag, zav] = make_first_estimation_zav(zav, config)
+function [flag, zav] = zav_make_first_estimation(zav, config)
     
     if zav.count < 10
         flag = 0;
-        zav = extend_zav(zav);
+        zav = zav_extend(zav);
         return;
     end
     
@@ -23,10 +23,15 @@ function [flag, zav] = make_first_estimation_zav(zav, config)
     else
         disp('Нет четверок')
         flag = 0;
+        zav = zav_extend(zav);
+        return;
     end
     
     if flag
-        [X] = zav_approx(zav, config);
+        [X, X1, D] = zav_approx(zav, config);
+        zav.SV_approx = X;
+        zav.SV_interp = X1;
+        zav.DispMatrix = D;
     end
        
     

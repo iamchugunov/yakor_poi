@@ -1,4 +1,4 @@
-function [X] = zav_approx(zav, config)
+function [X, X1, D] = zav_approx(zav, config)
     
     k = 0;
     for i = 1:zav.count
@@ -40,16 +40,23 @@ function [X] = zav_approx(zav, config)
     ax = A\bx;
     ay = A\by;
     az = A\bz;
-    X = [ax(1);ax(2); 0; ay(1);ay(2); 0; az(1); az(2)];
-    X
+    X = [ax(1);ax(2); 0; ay(1);ay(2); 0; az(1); az(2); 0];
     
-    tend = zav.poits(end).Frame;
-    XX = [ ax(1) ax(1) + ax(2) * (tend - zav.t0); ay(1) ay(1) + ay(2) * (tend - zav.t0) ];
-    if norm([ax(2); ay(2)]) < 600
-        plot(cord(1,:),cord(2,:),'xb')
-        plot(XX(1,:),XX(2,:),'.-r')
-        pause(0.1)
-    end
+    
+    [X1, R, nev] = max_likelyhood_3Da(zav.ToA, config, X);
+    D = inv(-R);
+    D = D(1:9,1:9);
+    X1 = X1(1:9);
+%     [X X1(1:9)]
+%     [N size(zav.ToA, 2)]
+    
+%     tend = zav.poits(end).Frame;
+%     XX = [ ax(1) ax(1) + ax(2) * (tend - zav.t0); ay(1) ay(1) + ay(2) * (tend - zav.t0) ];
+%     if norm([ax(2); ay(2)]) < 600
+%         plot(cord(1,:),cord(2,:),'xb')
+%         plot(XX(1,:),XX(2,:),'.-r')
+%         pause(0.1)
+%     end
     
 end
 

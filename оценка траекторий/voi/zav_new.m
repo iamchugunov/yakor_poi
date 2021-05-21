@@ -1,4 +1,4 @@
-function [zav] = new_zav(poit, config)
+function [zav] = zav_new(poit, config)
     zav.count = 0;
     zav.t0 = poit.Frame;
     zav.t_last = [];
@@ -11,12 +11,15 @@ function [zav] = new_zav(poit, config)
     zav.ToA = [];
     zav.freq = [];
     zav.lifetime = 0;
-    zav.T_start = config.T_start_traj;
+    zav.T_start = config.traj_T_start;
     zav.hard_start_flag = 0;
     if poit.xy_valid
         zav.last_4_cord = poit.coords;
         zav.xy_valid = 1;
     end
+    zav.SV_approx = [];
+    zav.SV_interp = [];
+    zav.DispMatrix = [];
         
 end
 

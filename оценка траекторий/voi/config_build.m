@@ -1,16 +1,16 @@
 function [ config ] = config_build()
-    addpath('D:\MATLAB\ПЕРЕСЧЕТ КООРДИНАТ');
-    addpath('D:\github\yakor_poi\оценка траекторий')
+    addpath('D:\Projects\ПЕРЕСЧЕТ КООРДИНАТ');
+    addpath('D:\Projects\yakor_poi\оценка траекторий')
 %     vor
-    PostsBLH(:,1) = [51.400773; 39.035690; 172.5];
-    PostsBLH(:,2) = [51.535456; 39.286083; 119.0];
-    PostsBLH(:,3) = [51.552025; 38.989821; 196.4];
-    PostsBLH(:,4) = [51.504039; 39.108616; 124.4];
+%     PostsBLH(:,1) = [51.400773; 39.035690; 172.5];
+%     PostsBLH(:,2) = [51.535456; 39.286083; 119.0];
+%     PostsBLH(:,3) = [51.552025; 38.989821; 196.4];
+%     PostsBLH(:,4) = [51.504039; 39.108616; 124.4];
 %     arm
-%     PostsBLH(:,1) = [40.106749; 44.325077; 851.2];
-%     PostsBLH(:,2) = [40.221671; 44.518625; 1250.4];
-%     PostsBLH(:,3) = [40.376235; 44.255345; 2034.1];
-%     PostsBLH(:,4) = [40.204856; 44.376949; 1002.0];
+    PostsBLH(:,1) = [40.106749; 44.325077; 851.2];
+    PostsBLH(:,2) = [40.221671; 44.518625; 1250.4];
+    PostsBLH(:,3) = [40.376235; 44.255345; 2034.1];
+    PostsBLH(:,4) = [40.204856; 44.376949; 1002.0];
 
     BLHref = mean(PostsBLH');
     BLHref(3) = 0;
@@ -44,8 +44,8 @@ function [ config ] = config_build()
     config.ranges.r42 = norm(PostsENU(:,4) - PostsENU(:,2));
     config.ranges.r43 = norm(PostsENU(:,4) - PostsENU(:,3));
     
-    config.T_kill_zav = 30;
-    config.T_start_traj = 10;
-    config.T_kill_traj = 60;
-    config.T_nak_traj = 10;
+    config.zav_T_kill = 30;
+    config.traj_T_start = 10;
+    config.traj_T_kill = 60;
+    config.traj_T_nak = 10;
 end

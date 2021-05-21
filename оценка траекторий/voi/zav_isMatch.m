@@ -1,4 +1,4 @@
-function [flag] = isMatch_to_zav(zav, poit)
+function [flag] = zav_isMatch(zav, poit)
     
 %     check ID match
     if zav.ID ~= -1 && zav.ID == poit.Smode

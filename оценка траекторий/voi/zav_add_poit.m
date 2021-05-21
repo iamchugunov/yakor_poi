@@ -1,4 +1,4 @@
-function [zav] = add_poit_to_zav(zav, poit)
+function [zav] = zav_add_poit(zav, poit)
     zav.count = zav.count + 1;
     
     zav.t_last = poit.Frame;
