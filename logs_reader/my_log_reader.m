@@ -11,12 +11,12 @@ N = length(files);
 k = 0;
 frames = 0;
 
-files_range = 1:N;
+files_range = 1:10;
 % files_range = 1:5;
 
 for i = files_range
     
-    filename = [folder '\' files(1).name];
+    filename = [folder '\' files(i).name];
     f = fopen(filename);
     
     j=0;
@@ -71,10 +71,12 @@ for i = files_range
                 end
             end 
         end
+        
 %         if contains(s,'pmask')
 %             
 %         end
     end
+    fclose(f);
 end
     fclose('all');
     [Frames] = my_log_parser(Frames);
