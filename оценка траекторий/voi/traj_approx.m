@@ -10,7 +10,7 @@ function [flag, X, X1, D] = traj_approx(traj, config)
         end
     end
     
-    if k == 0
+    if k < 4
         flag = 0;
         X = [];
         X1 = [];
@@ -60,24 +60,26 @@ function [flag, X, X1, D] = traj_approx(traj, config)
     D = inv(-R);
     D = D(1:9,1:9);
     X1 = X1(1:9);
+    
+    
 
-    [X X1(1:9)]
+%     [X X1(1:9)]
 %     [N size(zav.ToA, 2)]
     
-    norm(X([1 2 4 5],:) - X1([1 2 4 5],:))
+%     norm(X([1 2 4 5],:) - X1([1 2 4 5],:))
     
-    tend = traj.current_poits(end).Frame;
-%     XX = [ ax(1) ax(1) + ax(2) * (tend - traj.current_t0); ay(1) ay(1) + ay(2) * (tend - traj.current_t0) ];
-%     XX1 = [ ax(1) ax(1) + ax(2) * (tend - traj.current_t0); ay(1) ay(1) + ay(2) * (tend - traj.current_t0) ];
-    XX = [X(1) X(1) + X(2) * T(end) + X(3) * T(end)^2/2; X(4) X(4) + X(5) * T(end) + X(6) * T(end)^2/2];
-    XX1 = [X1(1) X1(1) + X1(2) * T(end) + X1(3) * T(end)^2/2; X1(4) X1(4) + X1(5) * T(end) + X1(6) * T(end)^2/2];
-    if norm([ax(2); ay(2)]) < 600
-        plot(cord(1,:),cord(2,:),'xb')
-        hold on
-        plot(XX(1,:),XX(2,:),'.-r')
-        plot(XX1(1,:),XX1(2,:),'.-g')
-        pause(0.1)
-    end
+%     tend = traj.current_poits(end).Frame;
+% %     XX = [ ax(1) ax(1) + ax(2) * (tend - traj.current_t0); ay(1) ay(1) + ay(2) * (tend - traj.current_t0) ];
+% %     XX1 = [ ax(1) ax(1) + ax(2) * (tend - traj.current_t0); ay(1) ay(1) + ay(2) * (tend - traj.current_t0) ];
+%     XX = [X(1) X(1) + X(2) * T(end) + X(3) * T(end)^2/2; X(4) X(4) + X(5) * T(end) + X(6) * T(end)^2/2];
+%     XX1 = [X1(1) X1(1) + X1(2) * T(end) + X1(3) * T(end)^2/2; X1(4) X1(4) + X1(5) * T(end) + X1(6) * T(end)^2/2];
+%     if norm([ax(2); ay(2)]) < 600
+%         plot(cord(1,:),cord(2,:),'xb')
+%         hold on
+%         plot(XX(1,:),XX(2,:),'.-r')
+%         plot(XX1(1,:),XX1(2,:),'.-g')
+%         pause(0.1)
+%     end
     
 end
 

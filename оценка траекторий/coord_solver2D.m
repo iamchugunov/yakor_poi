@@ -34,10 +34,10 @@ while 1
         else
             flag = 1;
             invHH = inv(H'*H);
-            DOPx = abs(invHH(1,1));
-            DOPy = abs(invHH(2,2));
-            DOPt = abs(invHH(3,3));
-            dop = sqrt([DOPx DOPy DOPt])';
+            DOPx = sqrt(abs(invHH(1,1)));
+            DOPy = sqrt(abs(invHH(2,2)));
+            DOPt = sqrt(abs(invHH(3,3)));
+            dop = norm([DOPx DOPy]);
             nev = norm(y - Y);
         end
         break

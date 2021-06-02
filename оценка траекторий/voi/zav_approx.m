@@ -17,6 +17,10 @@ function [X, X1, D] = zav_approx(zav, config)
     Y = cord(2,:);
     Z = cord(3,:);
     
+    X = medfilt1(X);
+    Y = medfilt1(Y);
+    Z = medfilt1(Z);
+    
     A(1,1) = N;
     A(1,2) = 0;
     A(2,2) = 0;
