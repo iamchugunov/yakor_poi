@@ -33,7 +33,7 @@ function [mod_frames] = generate_sorted_imp(frame, config)
     %%
     mod_frames = [];
     
-    parfor i = 1:length(freq)
+    for i = 1:length(freq)
         mod_frames(i).time = frame.time;
         mod_frames(i).freq = freq(i);
         mod_frames(i).Post1 = [];
