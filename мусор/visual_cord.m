@@ -29,31 +29,34 @@ function [] = visual_cord(zav, config)
     grid on
 %     plot(cord3(1,:),cord3(2,:),'.')
 %     plot(cord4(1,:),cord4(2,:),'kx')
-    plot(cord(1,:),cord(2,:),'.')
+    plot(cord(1,:),cord(2,:),'g')
+    plot(zav.SV_approx(1,:),zav.SV_approx(4,:),'.-b')
+    plot(zav.SV_interp(1,:),zav.SV_interp(4,:),'.-r')
 
     figure(2)
     plot3(config.posts(1,:), config.posts(2,:), config.posts(3,:),'vk')
     hold on
     grid on
-    plot3(cord(1,:),cord(2,:), cord(3,:),'.')
-%     figure
-%     subplot(131)
-%     grid on 
-%     hold on
-%     plot(t3,cord3(1,:)/1000,'.-')
-%     plot(t4,cord4(1,:)/1000,'.-')
-%     
-%     subplot(132)
-%     grid on 
-%     hold on
-%     plot(t3,cord3(2,:)/1000,'.-')
-%     plot(t4,cord4(2,:)/1000,'.-')
-%     
-%     subplot(133)
-%     grid on 
-%     hold on
-%     plot(t3,cord3(3,:)/1000,'.-')
-%     plot(t4,cord4(3,:)/1000,'.-')
+    plot3(cord(1,:),cord(2,:), cord(3,:),'g.')
+    plot3(zav.SV_interp(1,:),zav.SV_interp(4,:),zav.SV_interp(7,:),'.-r')
+    figure
+    subplot(131)
+    grid on 
+    hold on
+    plot(t3,cord3(1,:)/1000,'.-')
+    plot(t4,cord4(1,:)/1000,'.-')
+    
+    subplot(132)
+    grid on 
+    hold on
+    plot(t3,cord3(2,:)/1000,'.-')
+    plot(t4,cord4(2,:)/1000,'.-')
+    
+    subplot(133)
+    grid on 
+    hold on
+    plot(t3,cord3(3,:)/1000,'.-')
+    plot(t4,cord4(3,:)/1000,'.-')
 %     
 %     figure()
 %     subplot(121)

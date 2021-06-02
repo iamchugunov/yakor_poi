@@ -19,14 +19,16 @@ function [traj] = traj_new(zav, config)
     traj.xy_valid = zav.xy_valid;
     traj.all_ToA = zav.ToA;
     traj.ToA = [];
+    traj.current_poits = struct([]);
     traj.freq = zav.freq;
     traj.lifetime = zav.lifetime;
     traj.T_nak = config.traj_T_nak;
+    traj.hard_nak_flag = 0;
 
-    figure(1)
-    traj.t1 = plot(zav.last_4_cord(1,:),zav.last_4_cord(2,:),'x');
-    traj.t2 = text(zav.last_4_cord(1,:),zav.last_4_cord(2,:),num2str(traj.ID));
-    pause(0.01)
+%     figure(1)
+%     traj.t1 = plot(zav.last_4_cord(1,:),zav.last_4_cord(2,:),'x');
+%     traj.t2 = text(zav.last_4_cord(1,:),zav.last_4_cord(2,:),num2str(traj.ID));
+%     pause(0.01)
 
 end
 

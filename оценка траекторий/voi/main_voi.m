@@ -4,22 +4,7 @@ function [traj, zav, trash_traj, trash_zav] = main_voi(poits, config)
     grid on
     hold on
     axis([-1e5 1e5 -1e5 1e5])
-%     N = 10;
-%     k = 0;
-%     for i = 1:length(poits)-N
-%         for n = i+1:i+N
-%             [dt] = calculate_period1(poits(i), poits(n));
-%             if length(dt) > 3
-%                 k = k + 1;
-%                 minmaxdt(k) = max(dt) - min(dt);
-%                 stddt(k) = std(dt);
-%                 t(k) = mean(dt);
-%             end
-%         end
-%     end
-%     minmaxdt = minmaxdt(find(minmaxdt) > 0);
-%     stddt = stddt(find(stddt) > 0);
-    
+
     zav_T_kill = config.zav_T_kill;
     traj_T_start = config.traj_T_start;
     traj_T_kill = config.traj_T_kill;
@@ -151,6 +136,15 @@ function [traj, zav, trash_traj, trash_zav] = main_voi(poits, config)
         while j <= length(traj)
             if traj_isready(traj(j))
                 [flag, traj(j)] = traj_make_estimation(traj(j), config);
+                if traj(j).hard_nak_flag > 1
+                    if length(trash_traj) == 0
+                        trash_traj = traj(j);
+                    else
+                        trash_traj(end+1) = traj(j);
+                    end
+                    traj(j) = [];
+                    j = j - 1;
+                end
             end
             j = j + 1;
         end
