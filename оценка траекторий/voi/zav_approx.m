@@ -47,7 +47,8 @@ function [X, X1, D] = zav_approx(zav, config)
     X = [ax(1);ax(2); 0; ay(1);ay(2); 0; az(1); az(2); 0];
     
     
-    [X1, R, nev] = max_likelyhood_3Da(zav.ToA, config, X);
+    %     [X1, R, nev] = max_likelyhood_3Da(zav.ToA, config, X);
+    [X1, R, nev] = max_likelyhood_2dv(zav.ToA, config, X);
     D = inv(-R);
     D = D(1:9,1:9);
     X1 = X1(1:9);

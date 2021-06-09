@@ -1,6 +1,6 @@
-function [UserPos,DOP] = NavSolver_RD(SatPos, RD, InitPos)
+function [UserPos,nev] = NavSolver_RD(SatPos, RD, InitPos, h)
 MaxErr = 1e-3;
-MaxIter = 40;
+MaxIter = 10;
 stopflag = 1;
 k=0;
 UserPos = InitPos;
@@ -12,14 +12,17 @@ while stopflag
 k=k+1;
 Niter = Niter + 1;
 for m = 1:length(RD)
-        rho(m) = -norm(SatPos(1:N,1)-UserPos(1:N)) + norm(SatPos(1:N,m+1)-UserPos(1:N));
+        rm = sqrt((SatPos(1,1) - UserPos(1,1))^2 + (SatPos(2,1) - UserPos(2,1))^2 + (SatPos(3,1) - h)^2);
+        ri = sqrt((SatPos(1,m+1) - UserPos(1,1))^2 + (SatPos(2,m+1) - UserPos(2,1))^2 + (SatPos(3,m+1) - h)^2);
+        rho(m) = -rm + ri;
     for n = 1:N
-        H(m,n) = (SatPos(n,1)-UserPos(n))/(norm(SatPos(1:N,1)-UserPos(1:N)))-(SatPos(n,m+1)-UserPos(n))/norm(SatPos(1:N,m+1)-UserPos(1:N));
+        H(m,n) = (SatPos(n,1)-UserPos(n))/rm -(SatPos(n,m+1)-UserPos(n))/ri;
     end
 end
     DU=UserPos; %Переменная для расчета точности
     dPR=RD-rho; %Невязка по дальностям
     UserPos=UserPos+((H'*H)^(-1))*H'*dPR; %Коррекция текущего решения
+    nev = norm(dPR);
     dX=UserPos-DU; %Остаточная ошибка
     DOP=sqrt(trace((H'*H)^(-1))); %Геометрический фактор
     %Критерий останова

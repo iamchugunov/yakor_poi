@@ -1,12 +1,13 @@
 %% read and process logs
 [Frames] = my_log_reader();
-% Frame3008 = Frame(3008);
+
+Frame3464 = Frames(3464);
 %%
 [ config ] = config_build();
 [mod_frame3464] = generate_sorted_imp(Frame3464, config);
 format long g;
 %% get 3rd frequency
-mod_frame_freq = mod_frame3464(2);
+mod_frame_freq = mod_frame3464(4);
 %% create time massive with 10ns resolution   
 t = 0:1:12000000;
 val_post1 = zeros(1,length(t));
@@ -62,9 +63,9 @@ c12_T = conv(val_post_T1,val_post_T2,'same');
 %%
 c34_T = conv(val_post_T3,val_post_T4,'same');
 %%
-[x12_T_14,lags12_T_14] = xcorr(val_post_T1(1:14),val_post_T2(1:14),ceil(config.ranges.r21 / config.c * 1e9));
-[x13_T_14,lags13_T_14] = xcorr(val_post_T1(1:14),val_post_T3(1:14),ceil(config.ranges.r31 / config.c * 1e9));
-[x14_T_14,lags14_T_14] = xcorr(val_post_T1(1:14),val_post_T4(1:14),ceil(config.ranges.r41 / config.c * 1e9));
+[x12_T_14,lags12_T_14] = xcorr(val_post_T1,val_post_T2,ceil(config.ranges.r21 / config.c * 1e9));
+[x13_T_14,lags13_T_14] = xcorr(val_post_T1,val_post_T3,ceil(config.ranges.r31 / config.c * 1e9));
+[x14_T_14,lags14_T_14] = xcorr(val_post_T1,val_post_T4,ceil(config.ranges.r41 / config.c * 1e9));
 %%
 figure();plot(lags12_T,x12_T);title('Корреляция между постами 1 2')
 figure();plot(lags13_T,x13_T);title('Корреляция между постами 1 3')

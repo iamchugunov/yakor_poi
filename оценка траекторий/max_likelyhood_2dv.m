@@ -1,5 +1,5 @@
 function [X, R, nev] = max_likelyhood_2dv(y, config, X0)
-    addpath("D:\github\yakor_poi\deriv_func")   
+    addpath("D:\Projects\yakor_poi\deriv_func")  
     N = size(y,2);
 %     t0 = min(min(y));
 %     t0 = max(y(:,1)) - 1;

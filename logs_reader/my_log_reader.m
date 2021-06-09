@@ -12,11 +12,11 @@ k = 0;
 frames = 0;
 
 files_range = 1:N;
-% files_range = 1:5;
+files_range = 1:50;
 
 for i = files_range
     
-    filename = [folder '\' files(1).name];
+    filename = [folder '\' files(i).name];
     f = fopen(filename);
     
     j=0;

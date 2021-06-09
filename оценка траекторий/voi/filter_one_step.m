@@ -1,6 +1,6 @@
 function [fil] = filter_one_step(fil, X, t, Dn)
     [Xnew, Dxnew, discr] = Kalman_step_3D(X, fil.cur_SV, fil.Dx, t - fil.t_last, Dn, fil.Dksi);
-    if norm(discr([1 4 7])) > 1e4 || traj_is_ok(Xnew) == 0
+    if norm(discr([1 4 7])) > 0.5e4 || traj_is_ok(Xnew) == 0
         fil.skipped = fil.skipped + 1;
     else
         fil.skipped = 0;

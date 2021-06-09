@@ -1,9 +1,27 @@
 function [mod_frames] = generate_sorted_imp(frame, config)
+    if length(frame.Post1)
+        [OUT1] = sortbyfreq(frame.Post1);
+    else
+        OUT1 = [];
+    end
 
-    [OUT1] = sortbyfreq(frame.Post1);
-    [OUT2] = sortbyfreq(frame.Post2);
-    [OUT3] = sortbyfreq(frame.Post3);
-    [OUT4] = sortbyfreq(frame.Post4);
+    if length(frame.Post2)
+        [OUT2] = sortbyfreq(frame.Post2);
+    else
+        OUT2 = [];
+    end
+
+    if length(frame.Post3)
+        [OUT3] = sortbyfreq(frame.Post3);
+    else
+        OUT3 = [];
+    end
+
+    if length(frame.Post4)
+        [OUT4] = sortbyfreq(frame.Post4);
+    else
+        OUT4 = [];
+    end
     %%
     freqs = [];
     for i = 1:length(OUT1)
@@ -21,15 +39,19 @@ function [mod_frames] = generate_sorted_imp(frame, config)
     [a ind] = sort(freqs);
     nums = find(diff(a) > 5000);
     
-    freq = [];
-    for i = 1:length(nums)
-        if i == 1
-            freq(i) = mean(freqs(ind(1:nums(i))));
-            continue
+    if length(nums)
+        freq = [];
+        for i = 1:length(nums)
+            if i == 1
+                freq(i) = mean(freqs(ind(1:nums(i))));
+                continue
+            end
+            freq(i) = mean(freqs(ind(nums(i-1)+1:nums(i))));
         end
-        freq(i) = mean(freqs(ind(nums(i-1)+1:nums(i))));
+        freq(i+1) = mean(freqs(ind(nums(end)+ 1:end)));
+    else
+        freq = mean(freqs);
     end
-    freq(i+1) = mean(freqs(ind(nums(end)+ 1:end)));
     %%
     mod_frames = [];
     
