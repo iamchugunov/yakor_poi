@@ -11,8 +11,13 @@ N = length(files);
 k = 0;
 frames = 0;
 
+<<<<<<< Updated upstream
 files_range = 1:N;
 files_range = 1:50;
+=======
+files_range = 1:10;
+% files_range = 1:5;
+>>>>>>> Stashed changes
 
 for i = files_range
     

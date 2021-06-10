@@ -1,6 +1,5 @@
 %% read and process logs
 [Frames] = my_log_reader();
-
 Frame3464 = Frames(3464);
 %%
 [ config ] = config_build();
