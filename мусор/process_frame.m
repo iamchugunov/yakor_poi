@@ -1,6 +1,6 @@
 function [out] = process_frame(out,frame, config)
     
-%     out.time = frame.time;
+    out.time = frame.time;
 %     out.RD21 = 0;
 %     out.RD31 = 0;
 %     out.RD41 = 0;

@@ -42,14 +42,20 @@ end
     nums = find(diff(a) > 5000);
     
     freq = [];
-    for i = 1:length(nums)
-        if i == 1
-            freq(i) = mean(freqs(ind(1:nums(i))));
+    if(~isempty(nums))
+    for j = 1:length(nums)
+        if j == 1
+            freq(j) = mean(freqs(ind(1:nums(j))));
             continue
         end
-        freq(i) = mean(freqs(ind(nums(i-1)+1:nums(i))));
+        freq(j) = mean(freqs(ind(nums(j-1)+1:nums(j))));
+    end 
+        freq(j+1) = mean(freqs(ind(nums(end)+ 1:end)));
+    else
+        if(length(freqs)>=1)
+            freq(1) = mean(freqs(1:end));
+        end
     end
-    freq(i+1) = mean(freqs(ind(nums(end)+ 1:end)));
     %%
     mod_frames = [];
     
