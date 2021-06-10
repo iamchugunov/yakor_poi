@@ -1,78 +1,13 @@
-function [out] = process_frame(frame, config)
+function [out] = process_frame(out,frame, config)
     
-    out.time = frame.time;
-    out.RD21 = 0;
-    out.RD31 = 0;
-    out.RD41 = 0;
-    out.RD32 = 0;
-    out.RD42 = 0;
-    out.RD43 = 0;
-
-    t = 0:1:12000000;
-    val_post1 = zeros(1,length(t));
-    val_post2 = zeros(1,length(t));
-    val_post3 = zeros(1,length(t));
-    val_post4 = zeros(1,length(t));
-
-    val_post_T1 = zeros(1,length(t));
-    val_post_T2 = zeros(1,length(t));
-    val_post_T3 = zeros(1,length(t));
-    val_post_T4 = zeros(1,length(t));
-    
-    if length(frame.Post1)
-        uT_Post1 = [frame.Post1.uT].';
-    else
-        uT_Post1 = [];
-    end
-    if length(frame.Post2)
-        uT_Post2 = [frame.Post2.uT].';
-    else
-        uT_Post2 = [];
-    end
-    if length(frame.Post3)
-        uT_Post3 = [frame.Post3.uT].';
-    else
-        uT_Post3 = [];
-    end
-    if length(frame.Post4)
-        uT_Post4 = [frame.Post4.uT].';
-    else
-        uT_Post4 = [];
-    end
-    
-    if length(frame.Post1)
-        dur_Post1 = [frame.Post1.dur].'.*10;
-    else
-        dur_Post1 = [];
-    end
-    if length(frame.Post2)
-        dur_Post2 = [frame.Post2.dur].'.*10;
-    else
-        dur_Post2 = [];
-    end
-    if length(frame.Post3)
-        dur_Post3 = [frame.Post3.dur].'.*10;
-    else
-        dur_Post3 = [];
-    end
-    if length(frame.Post4)
-        dur_Post4 = [frame.Post4.dur].'.*10;
-    else
-        dur_Post4 = [];
-    end
-    
-    for i=1:length(uT_Post1)
-        val_post_T1(uT_Post1(i):(uT_Post1(i)+dur_Post1(i))) = ones(1,length(dur_Post1(i)));
-    end
-    for i=1:length(uT_Post2)
-        val_post_T2(uT_Post2(i):(uT_Post2(i)+dur_Post2(i))) = ones(1,length(dur_Post2(i)));
-    end
-    for i=1:length(uT_Post3)
-        val_post_T3(uT_Post3(i):(uT_Post3(i)+dur_Post3(i))) = ones(1,length(dur_Post3(i)));
-    end
-    for i=1:length(uT_Post4)
-        val_post_T4(uT_Post4(i):(uT_Post4(i)+dur_Post4(i))) = ones(1,length(dur_Post4(i)));
-    end
+%     out.time = frame.time;
+%     out.RD21 = 0;
+%     out.RD31 = 0;
+%     out.RD41 = 0;
+%     out.RD32 = 0;
+%     out.RD42 = 0;
+%     out.RD43 = 0;
+    [val_post_T1,val_post_T2,val_post_T3,val_post_T4] = fill_time_period(frame);
     
     thres_min = 20;
     if length(frame.Post1) > thres_min
