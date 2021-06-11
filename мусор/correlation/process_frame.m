@@ -8,7 +8,7 @@ function [out] = process_frame(out,frame, config)
 %     out.RD42 = 0;
 %     out.RD43 = 0;
     [val_post_T1,val_post_T2,val_post_T3,val_post_T4] = fill_time_period(frame);
-    
+    peaks_count = 2;
     thres_min = 20;
     if length(frame.Post1) > thres_min
         if length(frame.Post2) > thres_min
@@ -22,7 +22,7 @@ function [out] = process_frame(out,frame, config)
                 rd = -lags12_T(b(end-k))* 1e-9 * config.c;
                 k = k + 1;
                 out.RD21(k,:) = rd;
-                if k > 2
+                if k > peaks_count
                     break;
                 end
             end
@@ -40,7 +40,7 @@ function [out] = process_frame(out,frame, config)
                 rd = -lags13_T(b(end-k))* 1e-9 * config.c;
                 k = k + 1;
                 out.RD31(k,:) = rd;
-                if k > 2
+                if k > peaks_count
                     break;
                 end
             end
@@ -58,7 +58,7 @@ function [out] = process_frame(out,frame, config)
                 rd = -lags14_T(b(end-k))* 1e-9 * config.c;
                 k = k + 1;
                 out.RD41(k,:) = rd;
-                if k > 2
+                if k > peaks_count
                     break;
                 end
             end
@@ -80,7 +80,7 @@ function [out] = process_frame(out,frame, config)
                 rd = -lags23_T(b(end-k))* 1e-9 * config.c;
                 k = k + 1;
                 out.RD32(k,:) = rd;
-                if k > 2
+                if k > peaks_count
                     break;
                 end
             end
@@ -98,7 +98,7 @@ function [out] = process_frame(out,frame, config)
                 rd = -lags24_T(b(end-k))* 1e-9 * config.c;
                 k = k + 1;
                 out.RD42(k,:) = rd;
-                if k > 2
+                if k > peaks_count
                     break;
                 end
             end
@@ -119,7 +119,7 @@ function [out] = process_frame(out,frame, config)
                 rd = -lags34_T(b(end-k))* 1e-9 * config.c;
                 k = k + 1;
                 out.RD43(k,:) = rd;
-                if k > 2
+                if k > peaks_count
                     break;
                 end
             end
