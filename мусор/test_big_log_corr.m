@@ -10,7 +10,7 @@ frames_to_analyze = 1:7500;
 frame_ready = struct('time', 0,'RD21', 0,'RD31', 0,'RD41',0,...
 'RD32', 0,'RD42', 0,...
 'RD43', 0,'freq', 0,'frame', 0);
-out1 = repmat(frame_ready,length(Frames),1);
+out1 = repmat(frame_ready,7500,1);
 parfor i = frames_to_analyze
     mod_frames = generate_sorted_imp(Frames(i), config);
     for j = 1:length(mod_frames)

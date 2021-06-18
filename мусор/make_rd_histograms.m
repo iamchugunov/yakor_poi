@@ -41,7 +41,7 @@ function [rd_hists] = make_rd_histograms(rd_frames)
                 else
                     wei = 1;
                 end
-%                 wei = 1;
+                wei = 1;
                 rd_hists.RD21 = add_new_rd(rd_hists.RD21, rd_frames(i).RD21(j), rd_frames(i).time, wei);
             end
         end
@@ -56,7 +56,7 @@ function [rd_hists] = make_rd_histograms(rd_frames)
                 else
                     wei = 1;
                 end
-%                 wei = 1;
+                wei = 1;
                 rd_hists.RD31 = add_new_rd(rd_hists.RD31, rd_frames(i).RD31(j), rd_frames(i).time, wei);
             end
         end
@@ -71,7 +71,7 @@ function [rd_hists] = make_rd_histograms(rd_frames)
                 else
                     wei = 1;
                 end
-%                 wei = 1;
+                wei = 1;
                 rd_hists.RD41 = add_new_rd(rd_hists.RD41, rd_frames(i).RD41(j), rd_frames(i).time, wei);
             end
         end
@@ -86,7 +86,7 @@ function [rd_hists] = make_rd_histograms(rd_frames)
                 else
                     wei = 1;
                 end
-%                 wei = 1;
+                wei = 1;
                 rd_hists.RD32 = add_new_rd(rd_hists.RD32, rd_frames(i).RD32(j), rd_frames(i).time, wei);
             end
         end
@@ -101,7 +101,7 @@ function [rd_hists] = make_rd_histograms(rd_frames)
                 else
                     wei = 1;
                 end
-%                 wei = 1;
+                wei = 1;
                 rd_hists.RD42 = add_new_rd(rd_hists.RD42, rd_frames(i).RD42(j), rd_frames(i).time, wei);
             end
         end
@@ -116,7 +116,7 @@ function [rd_hists] = make_rd_histograms(rd_frames)
                 else
                     wei = 1;
                 end
-%                 wei = 1;
+                wei = 1;
                 rd_hists.RD43 = add_new_rd(rd_hists.RD43, rd_frames(i).RD43(j), rd_frames(i).time, wei);
             end
         end

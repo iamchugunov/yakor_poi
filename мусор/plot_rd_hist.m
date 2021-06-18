@@ -34,8 +34,10 @@ end
 
 function [] = plot_rd(rd)
     for i = 1:length(rd)
-%         plot(rd(i).t, rd(i).rd,'.-')
-    stem(rd(i).mean_rd, rd(i).count)
+        plot(rd(i).time, rd(i).rd,'.-')
+%     stem(rd(i).mean_rd, rd(i).count)
     end
 end
+
+
 
