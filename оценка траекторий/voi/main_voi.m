@@ -1,9 +1,10 @@
-function [traj, zav, trash_traj, trash_zav] = main_voi(poits, config)
+function [traj, zav, trash_traj, trash_zav, tlong] = main_voi(poits, config)
+    tic
     figure(1)
     plot(config.posts(1,:),config.posts(2,:),'kv')
     grid on
     hold on
-    axis([-1e5 1e5 -1e5 1e5])
+    axis([-1.5e5 1.5e5 -1.5e5 1.5e5])
 
     zav_T_kill = config.zav_T_kill;
     traj_T_start = config.traj_T_start;
@@ -19,7 +20,7 @@ function [traj, zav, trash_traj, trash_zav] = main_voi(poits, config)
     for i = 1:length(poits)
         i
         
-        if poits(i).freq > 9000
+        if poits(i).freq > 9000 %|| poits(i).count < 4
             continue
         end
         
@@ -93,6 +94,8 @@ function [traj, zav, trash_traj, trash_zav] = main_voi(poits, config)
             nums = find(poits(i).Frame - [traj.t_last_poit] > traj_T_kill);
             if nums
                 nums
+%                 set(traj(nums).t2,'String',"DEAD")
+%                 traj_set_plot(traj(nums),1e6,1e6)
                 disp("ТРАЕКТОРИЯ УМЕРЛА ПО ТАЙМАУТУ")
                 if isempty(trash_traj)
                     trash_traj = traj(nums);
@@ -137,13 +140,7 @@ function [traj, zav, trash_traj, trash_zav] = main_voi(poits, config)
             if traj_isready(traj(j))
                 [flag, traj(j)] = traj_make_estimation(traj(j), config);
                 if traj(j).hard_nak_flag > 1
-                    if length(trash_traj) == 0
-                        trash_traj = traj(j);
-                    else
-                        trash_traj(end+1) = traj(j);
-                    end
-                    traj(j) = [];
-                    j = j - 1;
+                    traj(j) = traj_reset(traj(j));
                 end
             end
             j = j + 1;
@@ -161,7 +158,11 @@ function [traj, zav, trash_traj, trash_zav] = main_voi(poits, config)
             end
             zav(nums) = [];
     end
-
+    
+    nums1 = find([traj.lifetime] > 300);
+    nums2 = find([trash_traj.lifetime] > 300);
+    tlong = [traj(nums1) trash_traj(nums2)];
+    toc
 end
 
 

@@ -18,9 +18,13 @@ function [traj] = traj_add_poit(traj, poit)
     
     traj.ToA(:,traj.current_points_count) = ToA;
     traj.freq(:,traj.all_poits_count) = poit.freq;
+    if poit.freq == 1090
+       traj.modes_count = traj.modes_count + 1;  
+    end
+    traj.modes_percent = round(traj.modes_count/traj.all_poits_count,2);
     if (traj.ID == -1) && (poit.Smode ~= -1)
         traj.ID = poit.Smode;
-%         set(traj.t2,'String',num2str(traj.ID))
+        set(traj.t2,'String',num2str(traj.ID))
     end
     if poit.count == 4
         traj.last_4 = poit;

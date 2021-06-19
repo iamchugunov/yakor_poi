@@ -17,6 +17,10 @@ function [X, X1, D] = zav_approx(zav, config)
     Y = cord(2,:);
     Z = cord(3,:);
     
+    X = medfilt1(X);
+    Y = medfilt1(Y);
+    Z = medfilt1(Z);
+    
     A(1,1) = N;
     A(1,2) = 0;
     A(2,2) = 0;
@@ -43,7 +47,8 @@ function [X, X1, D] = zav_approx(zav, config)
     X = [ax(1);ax(2); 0; ay(1);ay(2); 0; az(1); az(2); 0];
     
     
-    [X1, R, nev] = max_likelyhood_3Da(zav.ToA, config, X);
+        [X1, R, nev] = max_likelyhood_3Da(zav.ToA, config, X);
+%     [X1, R, nev] = max_likelyhood_2dv(zav.ToA, config, X);
     D = inv(-R);
     D = D(1:9,1:9);
     X1 = X1(1:9);

@@ -17,6 +17,7 @@ while feof(f)==0
     poit.coords = zeros(4,1);
     poit.xy_valid = 0;
     poit.valid_to_traj = 0;
+    poit.dop = 0;
     n = 0;
     for i = 1:4
        if poit.ToA(i) > 0
