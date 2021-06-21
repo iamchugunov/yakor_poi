@@ -29,8 +29,14 @@ for i=1:length(out1)
 end
 % sort out val by freq
 [out_sorted_by_freq] = sortbyfreq_new(out3_peaks);
-%% TO DO
-% create line of position
+%%
+[ARdb, ZRdb] = rd_frames_processing(out3_peaks, zeros(7500,1));
+
+%% kalman
+ [StateV,D_x] = Kalman_2_order(ARdb.RD41(2));
+%% plot RDs
+plot_all_ARdb_rd(ARdb,out3_peaks,'41')
+%% create line of position
 create_line_of_position(config,out_sorted_by_freq(2).imps(30));
 %%
 [h21, h31, h32, h41, h42, h43] = test(config,[10000 ;10000 ;1000]);
