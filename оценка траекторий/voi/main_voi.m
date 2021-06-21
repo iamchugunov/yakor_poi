@@ -20,7 +20,7 @@ function [traj, zav, trash_traj, trash_zav, tlong] = main_voi(poits, config)
     for i = 1:length(poits)
         i
         
-        if poits(i).freq > 9000
+        if poits(i).freq > 9000 %|| poits(i).count < 4
             continue
         end
         

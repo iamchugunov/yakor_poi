@@ -65,7 +65,7 @@ function [flag, zav] = zav_make_first_estimation(zav, config)
             D(1,1) = 100^2;
             D(4,4) = 100^2;
             D(7,7) = 100^2;
-        elseif flag1 == 0 && flag2 == 0
+        elseif flag1 == 0 && flag2 == 1
             X = X1;
         end
             

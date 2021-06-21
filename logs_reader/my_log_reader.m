@@ -76,10 +76,12 @@ for i = files_range
                 end
             end 
         end
+        
 %         if contains(s,'pmask')
 %             
 %         end
     end
+    fclose(f);
 end
     fclose('all');
     [Frames] = my_log_parser(Frames);

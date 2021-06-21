@@ -42,18 +42,11 @@ function [ config ] = config_build()
     config.sigma_d = 1e-6;
     config.posts_number = size(config.PostsENU,2);
     config.sigma_n = 10; %ns
-    %%
+
     config.ranges.r21 = norm(PostsENU(:,2) - PostsENU(:,1));
     config.ranges.r31 = norm(PostsENU(:,3) - PostsENU(:,1));
     config.ranges.r41 = norm(PostsENU(:,4) - PostsENU(:,1));
     config.ranges.r32 = norm(PostsENU(:,3) - PostsENU(:,2));
     config.ranges.r42 = norm(PostsENU(:,4) - PostsENU(:,2));
     config.ranges.r43 = norm(PostsENU(:,4) - PostsENU(:,3));
-    %%
-    config.times.t21 = config.ranges.r21/config.c*1e9;
-    config.times.t31 = config.ranges.r31/config.c*1e9;
-    config.times.t41 = config.ranges.r41/config.c*1e9;
-    config.times.t32 = config.ranges.r32/config.c*1e9;
-    config.times.t42 = config.ranges.r42/config.c*1e9;
-    config.times.t43 = config.ranges.r43/config.c*1e9;
 end
