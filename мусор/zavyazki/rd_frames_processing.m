@@ -10,7 +10,7 @@ function [ARdb, ZRdb] = rd_frames_processing(rd_frames, Frames)
     ZRdb = struct('RD21', [], 'RD31', [], 'RD41', [],'RD32', [], 'RD42', [], 'RD43', []);
     
     % 
-    timeout = 30;
+    timeout = 20;
     
     t0 = rd_frames(1).time;
     

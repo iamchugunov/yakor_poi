@@ -1,6 +1,6 @@
 function [ZRdb, ARdb] = ZR_to_AR(ZRdb, ARdb, time)
     if ~isempty(ZRdb)
-        nums = find([ZRdb.count] > 10);
+        nums = find([ZRdb.count] > 20);
         for i = 1:length(nums)
             if isempty(ARdb)
                 ARdb = ZRdb(nums(i));
