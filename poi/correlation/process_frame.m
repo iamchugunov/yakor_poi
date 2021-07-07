@@ -1,14 +1,14 @@
 function [out] = process_frame(out,frame, config)
     
     out.time = frame.time;
-%     out.RD21 = 0;
-%     out.RD31 = 0;
-%     out.RD41 = 0;
-%     out.RD32 = 0;
-%     out.RD42 = 0;
-%     out.RD43 = 0;
+    out.RD21 = 0;
+    out.RD31 = 0;
+    out.RD41 = 0;
+    out.RD32 = 0;
+    out.RD42 = 0;
+    out.RD43 = 0;
     [val_post_T1,val_post_T2,val_post_T3,val_post_T4] = fill_time_period(frame);
-    peaks_count = 2;
+    peaks_count = 30;
     thres_min = 20;
     if length(frame.Post1) > thres_min
         if length(frame.Post2) > thres_min

@@ -1,6 +1,7 @@
 function [val_post_T1,val_post_T2,val_post_T3,val_post_T4] = fill_time_period(frame)
 
     t = 0:1:12000000;
+%     t = 0:10:12000000;
     val_post_T1 = zeros(1,length(t));
     val_post_T2 = zeros(1,length(t));
     val_post_T3 = zeros(1,length(t));

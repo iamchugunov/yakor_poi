@@ -1,19 +1,19 @@
 function [] = plot_frames(Frames,nums)
-    figure()
+%     figure()
     hold on
     grid on
     for j = 1:length(nums)
         for i = 1:length(Frames(nums(j)).Post1)
-            plot_imp(Frames(nums(j)).Post1(i), 'b')
+            plot_imp(Frames(nums(j)).Post1(i), 'r')
         end
         for i = 1:length(Frames(nums(j)).Post2)
-            plot_imp(Frames(nums(j)).Post2(i), 'r')
+            plot_imp(Frames(nums(j)).Post2(i), 'g')
         end
         for i = 1:length(Frames(nums(j)).Post3)
-            plot_imp(Frames(nums(j)).Post3(i), 'g')
+            plot_imp(Frames(nums(j)).Post3(i), 'b')
         end
         for i = 1:length(Frames(nums(j)).Post4)
-            plot_imp(Frames(nums(j)).Post4(i), 'c')
+            plot_imp(Frames(nums(j)).Post4(i), 'k')
         end
         
     end

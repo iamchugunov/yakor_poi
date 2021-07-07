@@ -1,8 +1,8 @@
-function [Frames] = my_log_reader()
+function [Frames] = my_log_reader(folder, files_range)
 % считывание лога по кадрам
-if nargin == 0
-folder = uigetdir(cd,'Выберите папку с логами!');
-end
+% if nargin == 0
+% folder = uigetdir(cd,'Выберите папку с логами!');
+% end
  warning off
 
 files = dir(folder);
@@ -11,13 +11,8 @@ N = length(files);
 k = 0;
 frames = 0;
 
-<<<<<<< Updated upstream
-files_range = 1:N;
-files_range = 1:50;
-=======
-files_range = 1:10;
-% files_range = 1:5;
->>>>>>> Stashed changes
+% files_range = 1:N;
+% files_range = 1:2;
 
 for i = files_range
     
@@ -29,7 +24,7 @@ for i = files_range
         s = fgetl(f);
 %         splited_string(j) = split(s,' ');
         j=j+1;
-        disp(j);
+%         disp(j);
         if contains(s,'pmask')
             frames = frames + 1;
             hour   = str2double(s(11:13));

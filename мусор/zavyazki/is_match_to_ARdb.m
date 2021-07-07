@@ -1,6 +1,6 @@
 function [flag, ARdb] = is_match_to_ARdb(ARdb, rd, time, frame, rd_num)
 
-    thres = 1000;
+    thres = 150;
 
     flag = 0;
     if rd(1) ~= 0
@@ -15,6 +15,7 @@ function [flag, ARdb] = is_match_to_ARdb(ARdb, rd, time, frame, rd_num)
 %                     ARdb(j).out_rd = [ARdb(j).out_rd out_rd];
 %                     ARdb(j).time1 = [ARdb(j).time1 t];
 %                     ARdb(j).rd1(ARdb(j).count) = mean(out_rd);
+                    break;
                 end
             end
         end

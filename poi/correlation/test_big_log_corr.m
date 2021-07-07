@@ -36,3 +36,26 @@ toc
 create_line_of_position(config,out_sorted_by_freq(2).imps(30));
 %%
 [h21, h31, h32, h41, h42, h43] = test(config,[10000 ;10000 ;1000]);
+%%
+folder = uigetdir(cd,'Выберите папку с логами!');
+k = 0;
+for i = 1:200
+    tic
+    Frame = my_log_reader(folder, i);
+    for m = 1:500
+        mod_frames = generate_sorted_imp(Frame(m), config);
+        for j = 1:length(mod_frames)
+            if mod_frames(j).freq ~= 1090000
+                out1 = process_frame([],mod_frames(j), config);
+                out1.frame = i;
+                if out1.RD41(1) || out1.RD31(1) || out1.RD21(1) ||...
+                    out1.RD32(1) || out1.RD42(1) || out1.RD43(1)
+                    k = k + 1;
+                    out3_peaks(k) = out1;
+                end
+            end
+        end
+    end
+        t = toc;
+        disp([i t]);
+end

@@ -3,7 +3,7 @@ function [ZRdb] = add_rd_to_ZRdb(ZRdb, rd, time, frame, rd_num)
     % сколько макслагов добавляется в завязки
     N = 1; 
     % порог сравнения RD, м
-    thres = 1000;
+    thres = 500;
     
     flag = 0;
     if rd(1) ~= 0
