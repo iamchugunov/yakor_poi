@@ -23,8 +23,8 @@ while 1
     end
     
     X_prev = X;
-    X = X + (H'*H)^(-1)*(H')*(y-Y);
-    nev = norm(X - X_prev);
+    X = X + (H'*H)^(-1)*(H')*(y-Y)
+    nev = norm(X - X_prev)
     
     if (nev < epsilon) || (iter > max_iter) 
         

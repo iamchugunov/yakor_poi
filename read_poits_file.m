@@ -8,6 +8,9 @@ end
 f = fopen(filename);
 warning off
     k = 0;
+%     
+    fgetl(f);
+%     
 while feof(f)==0 
     s = fgetl(f);
     S = split(s);
