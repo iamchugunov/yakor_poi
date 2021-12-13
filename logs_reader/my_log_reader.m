@@ -1,8 +1,8 @@
 function [Frames] = my_log_reader(folder, files_range)
 % считывание лога по кадрам
-% if nargin == 0
-% folder = uigetdir(cd,'Выберите папку с логами!');
-% end
+if nargin == 0
+folder = uigetdir(cd,'Выберите папку с логами!');
+end
  warning off
 
 files = dir(folder);
@@ -11,7 +11,7 @@ N = length(files);
 k = 0;
 frames = 0;
 
-% files_range = 1:N;
+files_range = 1:10;
 % files_range = 1:2;
 
 for i = files_range

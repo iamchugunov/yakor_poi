@@ -20,6 +20,8 @@ while feof(f)==0
     
 end
 
+fclose(f);
+
 end
 
 
