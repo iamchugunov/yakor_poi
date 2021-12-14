@@ -72,7 +72,8 @@ while feof(f)==0
                 str2num(S{9,1});
                 str2num(S{10,1});
                 str2num(S{11,1});
-                str2num(S{12,1})];
+                str2num(S{12,1});
+                str2num(S{13,1})];
             k_modes = k_modes + 1;
             trace.modes(:,k_modes) = poit;
         case 'TORM'
