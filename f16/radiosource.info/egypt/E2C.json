@@ -1,0 +1,33 @@
+{
+    "Aircraft": "",
+    "Description": "mode 1",
+    "FreqRange": [
+        {
+            "max": 440000,
+            "min": 434000
+        }
+    ],
+    "IsGarbage": false,
+    "IsUsableAbaza": true,
+    "IsUsableTech": false,
+    "IsWritable": true,
+    "Modulation": "none",
+    "Name": "E2C",
+    "PrtRange": [
+        {
+            "max": 3569,
+            "min": 3566
+        },
+        {
+            "max": 3589,
+            "min": 3586
+        }
+    ],
+    "Radar": "",
+    "TauRange": [
+        {
+            "max": 14.04,
+            "min": 11.55
+        }
+    ]
+}

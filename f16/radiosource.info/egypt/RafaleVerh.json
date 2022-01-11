@@ -1,0 +1,29 @@
+{
+    "Aircraft": "",
+    "Description": "Rafale LFM ",
+    "FreqRange": [
+        {
+            "max": 9886773,
+            "min": 9859307
+        }
+    ],
+    "IsGarbage": false,
+    "IsUsableAbaza": true,
+    "IsUsableTech": false,
+    "IsWritable": true,
+    "Modulation": "none",
+    "Name": "Rafale",
+    "PrtRange": [
+        {
+            "max": 2259.949,
+            "min": 1960.932
+        }
+    ],
+    "Radar": "",
+    "TauRange": [
+        {
+            "max": 63,
+            "min": 58
+        }
+    ]
+}

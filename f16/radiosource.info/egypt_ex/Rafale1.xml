@@ -1,0 +1,81 @@
+<?xml version='1.0'?>
+<!--Impuls filter-->
+<filter name="Rafale1">+++ Rafale +++<filterID fl="32">
+    <v>0000f011</v>unique filter number</filterID>
+  <flags fl="32">
+    <v>00000000</v></flags>
+  <gates fl="32">
+    <v>20000,10,10,100</v>KHz, 10-s ns, 10-s ns, ns</gates>
+  <maskL fl="32">
+    <v>ff000000</v></maskL>
+  <maskP fl="32">
+    <v>00ff0000</v></maskP>
+  <letters fl="32">
+    <v>9805000</v>KHz</letters>
+  <patern fl="33">
+    <flags fl="32">
+      <v>00000000</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>293</v>10-s ns</duration>
+    <period fl="32">
+      <v>19736,0</v>ns, gate index</period>pt_FullFree</patern>
+  <patern fl="33">
+    <flags fl="32">
+      <v>00000000</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>334</v>10-s ns</duration>
+    <period fl="32">
+      <v>21347,0</v>ns, gate index</period>pt_FullFree</patern>
+  <patern fl="33">
+    <flags fl="32">
+      <v>00000000</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>371</v>10-s ns</duration>
+    <period fl="32">
+      <v>24575,0</v>ns, gate index</period>pt_FullFree</patern>
+  <patern fl="33">
+    <flags fl="32">
+      <v>00000000</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>410</v>10-s ns</duration>
+    <period fl="32">
+      <v>26180,0</v>ns, gate index</period>pt_FullFree</patern>
+  <patern fl="33">
+    <flags fl="32">
+      <v>00000000</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>412</v>10-s ns</duration>
+    <period fl="32">
+      <v>26990,0</v>ns, gate index</period>pt_FullFree</patern>
+  <patern fl="33">
+    <flags fl="32">
+      <v>00000000</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>573</v>10-s ns</duration>
+    <period fl="32">
+      <v>34640,0</v>ns, gate index</period>pt_FullFree</patern>
+</filter>

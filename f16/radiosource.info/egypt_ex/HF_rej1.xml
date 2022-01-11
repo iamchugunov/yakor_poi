@@ -1,0 +1,26 @@
+<?xml version='1.0'?>
+<!--Impuls filter-->
+<filter name="HF_rej1">HF reject short pulse<filterID fl="32">
+    <v>00005050</v>unique filter number</filterID>
+  <flags fl="32">
+    <v>1</v></flags>
+  <gates fl="32">
+    <v>8000000,15,15,10000000</v>KHz, 10-s ns, 10-s ns, ns</gates>
+  <maskL fl="32">
+    <v>ff000000</v></maskL>
+  <maskP fl="32">
+    <v>00ff0000</v></maskP>
+  <letters fl="32">
+    <v>10000000</v>KHz</letters>
+  <patern fl="33">
+    <flags fl="32">
+      <v>00000000</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>15</v>10-s ns</duration>
+    <period fl="32">
+      <v>10000000,0</v>ns, gate index</period>pt_FullFree</patern>
+</filter>

@@ -1,0 +1,39 @@
+<?xml version='1.0'?>
+<!--Impuls filter-->
+<filter name="Mirage1">+++ Mirage +++<filterID fl="32">
+    <v>0000f001</v>unique filter number</filterID>
+  <flags fl="32">
+    <v>00000000</v></flags>
+  <gates fl="32">
+    <v>1500,12,12,1000</v>KHz, 10-s ns, 10-s ns, ns</gates>
+  <maskL fl="32">
+    <v>ff000000</v></maskL>
+  <maskP fl="32">
+    <v>00ff0000</v></maskP>
+  <letters fl="32">
+    <v>0</v>KHz</letters>
+  <patern fl="33">
+    <flags fl="32">
+      <v>00000000</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>9252690</v>
+      <v>9264111</v>
+      <v>9281184</v>
+      <v>9294118</v>
+      <v>9312753</v>
+      <v>9326130</v>
+      <v>9343873</v>
+      <v>9358508</v>
+      <v>9374638</v>
+      <v>9390922</v>
+      <v>9409996</v>
+      <v>9428302</v>
+      <v>9447617</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>73</v>10-s ns</duration>
+    <period fl="32">
+      <v>498000,0</v>
+      <v>996000,0</v>ns, gate index</period>pt_FullFree</patern>
+</filter>

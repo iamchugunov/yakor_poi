@@ -1,0 +1,121 @@
+<?xml version='1.0'?>
+<!--Impuls filter-->
+<filter name="F16-VChP2">+++ F16 VChP2 +++<filterID fl="32">
+    <v>f161</v>unique filter number</filterID>
+  <flags fl="32">
+    <v>00000000</v></flags>
+  <gates fl="32">
+    <v>1500,5,5,80</v>KHz, 10-s ns, 10-s ns, ns</gates>
+  <maskL fl="32">
+    <v>7f000000</v></maskL>
+  <maskP fl="32">
+    <v>00ff0000</v></maskP>
+  <letters fl="32">
+    <v>9700000</v>
+    <v>9710000</v>
+    <v>9765000</v>
+    <v>9874700</v>
+    <v>9905000</v>KHz</letters>
+  <patern fl="33">
+    <flags fl="32">
+      <v>1</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>48</v>10-s ns</duration>
+    <timepos fl="32">
+      <v>11500</v>
+      <v>11500</v>
+      <v>11500</v>
+      <v>13500</v>
+      <v>13500</v>
+      <v>13500</v>
+      <v>0</v>ns</timepos>pt_FrTArray</patern>
+  <patern fl="33">
+    <flags fl="32">
+      <v>1</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>48</v>10-s ns</duration>
+    <timepos fl="32">
+      <v>13500</v>
+      <v>13500</v>
+      <v>13500</v>
+      <v>12250</v>
+      <v>12250</v>
+      <v>12250</v>
+      <v>0</v>ns</timepos>pt_FrTArray</patern>
+  <patern fl="33">
+    <flags fl="32">
+      <v>1</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>48</v>10-s ns</duration>
+    <timepos fl="32">
+      <v>12250</v>
+      <v>12250</v>
+      <v>12250</v>
+      <v>14500</v>
+      <v>14500</v>
+      <v>14500</v>
+      <v>0</v>ns</timepos>pt_FrTArray</patern>
+  <patern fl="33">
+    <flags fl="32">
+      <v>1</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>48</v>10-s ns</duration>
+    <timepos fl="32">
+      <v>14500</v>
+      <v>14500</v>
+      <v>14500</v>
+      <v>16000</v>
+      <v>16000</v>
+      <v>16000</v>
+      <v>0</v>ns</timepos>pt_FrTArray</patern>
+  <patern fl="33">
+    <flags fl="32">
+      <v>1</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>48</v>10-s ns</duration>
+    <timepos fl="32">
+      <v>16000</v>
+      <v>16000</v>
+      <v>16000</v>
+      <v>12500</v>
+      <v>12500</v>
+      <v>12500</v>
+      <v>0</v>ns</timepos>pt_FrTArray</patern>
+  <patern fl="33">
+    <flags fl="32">
+      <v>1</v></flags>
+    <gate fl="32">
+      <v>0</v>Gate index</gate>
+    <frequency fl="32">
+      <v>0</v>offset KHz</frequency>
+    <duration fl="32">
+      <v>48</v>10-s ns</duration>
+    <timepos fl="32">
+      <v>12500</v>
+      <v>12500</v>
+      <v>12500</v>
+      <v>11500</v>
+      <v>11500</v>
+      <v>11500</v>
+      <v>0</v>ns</timepos>pt_FrTArray</patern>
+</filter>

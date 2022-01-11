@@ -1,0 +1,29 @@
+{
+    "Aircraft": "",
+    "Description": "mode 2",
+    "FreqRange": [
+        {
+            "max": 9825000,
+            "min": 9785000
+        }
+    ],
+    "IsGarbage": false,
+    "IsUsableAbaza": true,
+    "IsUsableTech": false,
+    "IsWritable": true,
+    "Modulation": "none",
+    "Name": "Rafale",
+    "PrtRange": [
+        {
+            "max": 21.447,
+            "min": 21.247
+        }
+    ],
+    "Radar": "",
+    "TauRange": [
+        {
+            "max": 3.44,
+            "min": 3.24
+        }
+    ]
+}

@@ -1,0 +1,77 @@
+{
+    "Aircraft": "",
+    "Description": "F16-SChP1",
+    "FreqRange": [
+        {
+            "max": 9765602,
+            "min": 9764613
+        },
+        {
+            "max": 9711000,
+            "min": 9709000
+        },
+        {
+            "max": 9876000,
+            "min": 9874000
+        },
+        {
+            "max": 9701000,
+            "min": 9699000
+        },
+        {
+            "max": 9906000,
+            "min": 9903000
+        },
+        {
+            "max": 9811000,
+            "min": 9809000
+        },
+        {
+            "max": 9821000,
+            "min": 9819000
+        }
+    ],
+    "IsGarbage": false,
+    "IsUsableAbaza": true,
+    "IsUsableTech": true,
+    "IsWritable": false,
+    "Modulation": "none",
+    "Name": "F16",
+    "PrtRange": [
+        {
+            "max": 31.011,
+            "min": 30.988
+        },
+        {
+            "max": 37.01,
+            "min": 36.99
+        },
+        {
+            "max": 47.1,
+            "min": 46.9
+        },
+        {
+            "max": 53.07,
+            "min": 52.93
+        },
+        {
+            "max": 59.021,
+            "min": 58.98
+        },
+        {
+            "max": 34.099,
+            "min": 33.899
+        },
+        {
+            "max": 41.1,
+            "min": 40.9
+        }
+    ],
+    "Radar": "",
+    "TauRange": [
+        {
+            "max": 1.1,
+            "min": 0.85
+        }
+    ]
+}

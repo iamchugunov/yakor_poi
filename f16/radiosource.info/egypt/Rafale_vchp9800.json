@@ -1,0 +1,77 @@
+{
+    "Aircraft": "",
+    "Description": "mode vchp",
+    "FreqRange": [
+        {
+            "max": 9819256,
+            "min": 9777105
+        }
+    ],
+    "IsGarbage": false,
+    "IsUsableAbaza": true,
+    "IsUsableTech": false,
+    "IsWritable": true,
+    "Modulation": "none",
+    "Name": "Rafale",
+    "PrtRange": [
+        {
+            "max": 10.389,
+            "min": 8.527
+        },
+        {
+            "max": 21.353,
+            "min": 18.937
+        },
+        {
+            "max": 21.483,
+            "min": 21.225
+        },
+        {
+            "max": 24.731,
+            "min": 24.388
+        },
+        {
+            "max": 27.744,
+            "min": 25.345
+        },
+        {
+            "max": 32.043,
+            "min": 31.558
+        },
+        {
+            "max": 34.812,
+            "min": 34.48
+        }
+    ],
+    "Radar": "",
+    "TauRange": [
+        {
+            "max": 2.19,
+            "min": 2
+        },
+        {
+            "max": 3,
+            "min": 2.81
+        },
+        {
+            "max": 3.4,
+            "min": 3.22
+        },
+        {
+            "max": 3.79,
+            "min": 3.61
+        },
+        {
+            "max": 4.2,
+            "min": 4.03
+        },
+        {
+            "max": 5.01,
+            "min": 4.83
+        },
+        {
+            "max": 5.8,
+            "min": 5.64
+        }
+    ]
+}

@@ -134,6 +134,29 @@ else
     trace.id = 0;
 end
 
+if ~isempty(trace.modes)
+    nums = find(trace.modes(6,:) > 0);
+    if ~isempty(nums)
+        IDS = unique(trace.modes(6,nums));
+        trace.idm = dec2hex(IDS,6);
+    else
+        trace.idm = 0;
+    end
+else
+    trace.idm = 0;
+end
+
+if ~isempty(trace.modes)
+    nums = find(trace.modes(11,:) > 0);
+    if ~isempty(nums)
+        IDS = unique(trace.modes(11,nums));
+        trace.squawk = dec2hex(IDS,4);
+    else
+        trace.squawk = 0;
+    end
+else
+    trace.squawk = 0;
+end
 
 
 fclose(f);

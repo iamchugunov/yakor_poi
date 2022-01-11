@@ -1,0 +1,53 @@
+{
+    "Aircraft": "",
+    "Description": "Vchp 9710",
+    "FreqRange": [
+        {
+            "max": 9711000,
+            "min": 9709000
+        }
+    ],
+    "IsGarbage": false,
+    "IsUsableAbaza": true,
+    "IsUsableTech": true,
+    "IsWritable": false,
+    "Modulation": "none",
+    "Name": "F16-V2",
+    "PrtRange": [
+        {
+            "max": 13.55,
+            "min": 13.45
+        },
+        {
+            "max": 14.55,
+            "min": 14.45
+        },
+        {
+            "max": 13.05,
+            "min": 12.95
+        },
+        {
+            "max": 12.3,
+            "min": 12.2
+        },
+        {
+            "max": 11.55,
+            "min": 11.45
+        },
+        {
+            "max": 12.55,
+            "min": 12.45
+        },
+        {
+            "max": 16.05,
+            "min": 15.95
+        }
+    ],
+    "Radar": "",
+    "TauRange": [
+        {
+            "max": 0.53,
+            "min": 0.43
+        }
+    ]
+}

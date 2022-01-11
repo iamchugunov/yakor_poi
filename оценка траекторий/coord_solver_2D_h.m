@@ -3,7 +3,7 @@ function [X, flag, dop] = coord_solver_2D_h(y, posts, X0, h)
     min_nev = 1e20;
     for i = 1:length(h)
         [X(:,i), dop(i), nev(i), flag] = coord_solver2D(y, posts, X0, h(i));
-        if nev(i) < min_nev && flag
+        if (nev(i) < min_nev) && flag
             min_i = i;
             min_nev = nev(i);
         end

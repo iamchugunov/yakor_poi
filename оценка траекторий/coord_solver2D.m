@@ -1,7 +1,7 @@
 function [X, dop, nev, flag] = coord_solver2D(y, posts, X0, h)
 
     epsilon = 0.001;
-    max_iter = 20;
+    max_iter = 10;
     
     N = size(posts,2);
     Y = zeros(N, 1);
@@ -24,11 +24,11 @@ while 1
     
     X_prev = X;
     X = X + (H'*H)^(-1)*(H')*(y-Y);
-    nev = norm(X - X_prev)
+    nev = norm(X - X_prev);
     
     if (nev < epsilon) || (iter > max_iter) 
         
-        if nev > 1e8 || norm(X(1:2)) > 3.e5
+        if nev > 1e8 || norm(X(1:2)) > 5.e5
             flag = 0;
             dop = 0;
         else
@@ -39,6 +39,9 @@ while 1
             DOPt = sqrt(abs(invHH(3,3)));
             dop = norm([DOPx DOPy]);
             nev = norm(y - Y);
+            if nev > 30
+                flag = 0;
+            end
         end
         break
     end

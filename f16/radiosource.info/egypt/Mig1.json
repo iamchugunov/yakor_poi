@@ -1,0 +1,33 @@
+{
+    "Aircraft": "",
+    "Description": "mode 1",
+    "FreqRange": [
+        {
+            "max": 9278951,
+            "min": 9259473
+        },
+        {
+            "max": 9314827,
+            "min": 9305822
+        }
+    ],
+    "IsGarbage": false,
+    "IsUsableAbaza": true,
+    "IsUsableTech": false,
+    "IsWritable": true,
+    "Modulation": "none",
+    "Name": "Mig29",
+    "PrtRange": [
+        {
+            "max": 80.313,
+            "min": 79
+        }
+    ],
+    "Radar": "",
+    "TauRange": [
+        {
+            "max": 6.43,
+            "min": 0
+        }
+    ]
+}
