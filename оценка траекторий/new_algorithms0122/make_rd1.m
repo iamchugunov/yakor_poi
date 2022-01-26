@@ -1,6 +1,7 @@
-N = 3;
-
-poits = out(N).poits;
+% N = 14;
+% 
+% poits = out(N).poits;
+poits = poits1(:,30:900);
 t = [];
 toa = [];
 coords = [];

@@ -62,7 +62,7 @@ while 1
     
     if (nev < epsilon) || (iter > max_iter) 
         
-        if nev > 1e8 || norm(X(1:2)) > 5.e5
+        if nev > 1e8 || norm(X(1:2)) > 7.e5
             flag = 0;
             dop = 0;
         else
@@ -72,9 +72,9 @@ while 1
             DOPy = sqrt(abs(invHH(2,2)));
             dop = norm([DOPx DOPy]);
             nev = norm(y(nums) - Y);
-            if nev > 100
-                flag = 0;
-            end
+%             if nev > 100
+%                 flag = 0;
+%             end
         end
         break
     end

@@ -1,6 +1,6 @@
 function [traj] = traj_new(poit, config)
     
-%     traj.mode = 0; % 0 - завязка, 1 - траектория
+    traj.mode = 0; % 0 - завязка, 1 - траектория
     
     traj.p_count = 1; % число отметок траектории
     traj.lifetime = 0; % время жизни траектории
@@ -21,15 +21,15 @@ function [traj] = traj_new(poit, config)
     traj.modes_percent = round(traj.modes_count/traj.p_count,2) * 100;% процент модесов
     traj.rd = [0;0;0;0;0;0];
     traj.rd = poit.rd;
-%     traj.fil = [];
+    traj.filters = [];
 %     
-%     if poit.count == 4
-%         traj.last_4 = poit; % последняя четверка
-%         traj.last_4_flag = 1; % флаг последней четверки
-%     else
-%         traj.last_4 = [];
-%         traj.last_4_flag = 0;
-%     end
+    if poit.count == 4
+        traj.last_4 = poit; % последняя четверка
+        traj.last_4_flag = 1; % флаг последней четверки
+    else
+        traj.last_4 = [];
+        traj.last_4_flag = 0;
+    end
 %     
 %     if poit.xy_valid
 %         traj.xy_valid = 1;

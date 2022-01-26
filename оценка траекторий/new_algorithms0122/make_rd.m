@@ -1,6 +1,7 @@
 N = 4;
 
 poits = traj(N).poits;
+% poits = poits1;
 t = [];
 toa = [];
 coords = [];

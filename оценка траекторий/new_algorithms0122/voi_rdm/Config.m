@@ -1,6 +1,6 @@
 function [ config ] = Config( )
-    addpath('D:\MATLAB\ПЕРЕСЧЕТ КООРДИНАТ');
-    addpath('D:\github\disser\matlab\interpolation\math')
+    addpath('D:\Projects\ПЕРЕСЧЕТ КООРДИНАТ');
+    addpath('D:\Projects\disser\matlab\interpolation\math')
     
     % common parameters
     config.c = 299792458;
@@ -66,6 +66,9 @@ function [ config ] = Config( )
     config.T_kill = 60;
     config.T_nak = 30;
     config.T_est = 5;
+    
+    config.sigma_n = 50;
+    config.sigma_ksi = 1;
 
 
 end

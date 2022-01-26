@@ -1,4 +1,4 @@
-function [X, dop] = NavSolverRDinvh(y, posts, X0, h)
+function [X, flag, dop, nev] = NavSolverRDinvh(y, posts, X0, h)
 
     epsilon = 0.001;
     max_iter = 7;
@@ -59,11 +59,21 @@ while 1
     X_prev = X;
     X = X + (H'*H)^(-1)*(H')*(y(nums)-Y);
     
-    if (norm(X - X_prev) < epsilon) || (iter > max_iter)
-        invHH = inv(H'*H);
-        DOPx = abs(invHH(1,1));
-        DOPy = abs(invHH(2,2));
-        dop = sqrt([DOPx DOPy])';
+    nev = norm(X - X_prev);
+    
+    if (nev < epsilon) || (iter > max_iter) 
+        
+        if nev > 1e8 || norm(X(1:2)) > 5.e5
+            flag = 0;
+            dop = 0;
+        else
+            flag = 1;
+            invHH = inv(H'*H);
+            DOPx = sqrt(abs(invHH(1,1)));
+            DOPy = sqrt(abs(invHH(2,2)));
+            dop = norm([DOPx DOPy]);
+            nev = norm(y(nums) - Y);
+        end
         break
     end
 end

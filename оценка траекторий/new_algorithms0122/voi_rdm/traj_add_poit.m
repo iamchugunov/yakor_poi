@@ -1,4 +1,4 @@
-function [ready_flag, traj] = traj_add_poit(traj, poit)
+function [ready_flag, traj] = traj_add_poit(traj, poit, config)
     
     traj.p_count = traj.p_count + 1;
     traj.t_current = poit.Frame;
@@ -21,27 +21,42 @@ function [ready_flag, traj] = traj_add_poit(traj, poit)
         end
     end
     
-%     if poit.count == 4
-%         traj.last_4 = poit; 
-%         traj.last_4_flag = 1; 
-%     end
+    if traj.mode
+        
+        D_n = config.sigma_n^2;
+        D_ksi = config.sigma_ksi^2;
+        
+        for i = 1:6
+            if poit.rd_flag(i)
+                dt = poit.Frame - traj.filters(i).t_last;
+                [traj.filters(i).X, traj.filters(i).D_x, discr] = Kalman_step_1D(poit.rd(i), traj.filters(i).X, traj.filters(i).D_x, dt, D_n, D_ksi);
+                traj.filters(i).t_last = poit.Frame;
+            end
+        end
+        
+    end
+    
+    if poit.count == 4
+        traj.last_4 = poit; 
+        traj.last_4_flag = 1; 
+    end
 %     
 %     if poit.xy_valid
 %         traj.xy_valid = 1;
 %     end
 %     
-%     switch traj.mode
-%         case 0
-%             T_nak = traj.T_nak;
-%         case 1
-%             T_nak = traj.T_est;
-%     end
+    switch traj.mode
+        case 0
+            T_nak = traj.T_nak;
+        case 1
+            T_nak = traj.T_est;
+    end
     
-%     if traj.t_current - traj.t_last > T_nak
-%         ready_flag = 1;
-%     else
-%         ready_flag = 0;
-%     end
-    ready_flag = 0;
+    if traj.t_current - traj.t_last > T_nak
+        ready_flag = 1;
+    else
+        ready_flag = 0;
+    end
+    
 end
 

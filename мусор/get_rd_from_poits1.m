@@ -13,13 +13,13 @@ function [rd] = get_rd_from_poits1(poits)
     rd(6,:) = toa(3,:) - toa(2,:);
     rd(7,:) = toa(2,:) - toa(1,:);
     
-    plot(rd(1,:),rd(2,:),'.')
+    plot(rd(1,:)-rd(1,1),rd(2,:),'.')
     hold on
-    plot(rd(1,:),rd(3,:),'.')
+    plot(rd(1,:)-rd(1,1),rd(3,:),'.')
     hold on
-    plot(rd(1,:),rd(4,:),'.')
-    plot(rd(1,:),rd(5,:),'.')
-    plot(rd(1,:),rd(6,:),'.')
-    plot(rd(1,:),rd(7,:),'.')
+    plot(rd(1,:)-rd(1,1),rd(4,:),'.')
+    plot(rd(1,:)-rd(1,1),rd(5,:),'.')
+    plot(rd(1,:)-rd(1,1),rd(6,:),'.')
+    plot(rd(1,:)-rd(1,1),rd(7,:),'.')
 end
 

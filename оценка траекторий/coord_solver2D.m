@@ -39,9 +39,9 @@ while 1
             DOPt = sqrt(abs(invHH(3,3)));
             dop = norm([DOPx DOPy]);
             nev = norm(y - Y);
-            if nev > 30
-                flag = 0;
-            end
+%             if nev > 30
+%                 flag = 0;
+%             end
         end
         break
     end

@@ -36,7 +36,7 @@ while feof(f)==0
                 str2num(S{9,1});
                 str2num(S{10,1});
                 str2num(S{11,1});
-                str2num(S{12,1})];
+                str2num(S{12,1});];
             k_poits = k_poits + 1;
             
             trace.poits(:,k_poits) = poit;

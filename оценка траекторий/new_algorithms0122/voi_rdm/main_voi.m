@@ -19,18 +19,24 @@ function [traj, zav, trash_traj, trash_zav] = main_voi(poits, config)
 %             poits(i) = poit_calc(poits(i), X0, config);
 %         end
         
+        Dmin = 1e10;
+        j_min = 0;
         match_flag_traj = 0;
         for j = 1:length(traj)
-            match_flag_traj = traj_isMatch(traj(j), poits(i));
+            [match_flag_traj, D] = traj_isMatch_to_traj(traj(j), poits(i), config);
                 if match_flag_traj == 1
-                   break; 
+                   break;
+%                    if D < Dmin
+%                        Dmin = D;
+%                        j_min = j;
+%                    end
                 end
         end
         
         if match_flag_traj == 0
             match_flag_zav = 0;
             for j = 1:length(zav)
-                match_flag_zav = traj_isMatch(zav(j), poits(i));
+                match_flag_zav = traj_isMatch_to_zav(zav(j), poits(i));
                 if match_flag_zav == 1
                    break; 
                 end
@@ -50,11 +56,25 @@ function [traj, zav, trash_traj, trash_zav] = main_voi(poits, config)
             end
             
             if j
-                [ready_flag, zav(j)] = traj_add_poit(zav(j), poits(i));
+                [ready_flag, zav(j)] = traj_add_poit(zav(j), poits(i), config);
+                if ready_flag
+                    [flag, zav(j)] = process_zav(zav(j),config);
+                    if flag
+                        zav(j).mode = 1;
+                        if isempty(traj)
+                            traj = zav(j);
+                        else
+                            traj(end+1) = zav(j);
+                        end
+                    else
+                        disp("Завязка не получилась")
+                    end                    
+                    zav(j) = [];                   
+                end
             end
             
         else
-            [ready_flag, traj(j)] = traj_add_poit(traj(j), poits(i));
+            [ready_flag, traj(j)] = traj_add_poit(traj(j), poits(i), config);
         end
         
         nums = find(poits(i).Frame - [zav.t_current] > config.zav_T_kill);
@@ -68,16 +88,16 @@ function [traj, zav, trash_traj, trash_zav] = main_voi(poits, config)
             zav(nums) = [];
         end
         
-        nums = find([zav.p_count] > 100);
-        if nums
-            nums
-            if isempty(traj)
-                traj = zav(nums);
-            else
-                traj(end+1:end+length(nums)) = zav(nums);
-            end
-            zav(nums) = [];
-        end
+%         nums = find([zav.p_count] > 100);
+%         if nums
+%             nums
+%             if isempty(traj)
+%                 traj = zav(nums);
+%             else
+%                 traj(end+1:end+length(nums)) = zav(nums);
+%             end
+%             zav(nums) = [];
+%         end
         
 %         
 %         if length(traj) > 0
